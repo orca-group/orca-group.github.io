@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <pre id="header">
+  .d88b.  888d888  .d8888b  8888b.
+ d88""88b 888P"   d88P"        "88b
+ 888  888 888     888      .d888888
+ Y88..88P 888     Y88b.    888  888
+  "Y88P"  888      "Y8888P "Y888888</pre>
+  <ul id="posts">
+    {{ range (where .Site.Pages "Section" "posts") }}
+    {{ range .Pages }}
+      {{ $dateTime := .PublishDate.Format "2006-01-02" }}
+      {{ $dateFormat := .Site.Params.dateFormat | default "January 2, 2006" }}
+      <li>
+        <a href="{{.Permalink}}">{{.Title}}</a>
+        <p>
+          Posted on
+          <time dateTime="{{ $dateTime }}">
+            {{ .Date.Format "January 2" }}{{ if in (slice 1 21 31) .Date.Day}}st{{ else if in (slice 2 22) .Date.Day}}nd{{ else if in (slice 3 23) .Date.Day}}rd{{ else }}th{{ end }},
+            {{ .Date.Format "2006" }}</time>
+          by&nbsp;
+          {{- partial "author.html" . -}}
+        </p>
+      </li>
+    {{ end }}
+    {{ end }}
+    <li>
+      <a href="/">Home</a>
+    </li>
+  </ul>
+{{ end }}

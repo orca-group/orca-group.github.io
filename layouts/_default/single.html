@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $dateFormat := .Site.Params.dateFormat | default "January 2, 2006" }}
+  <div id="metadata">
+    <span id="posted-on">
+      Posted on
+      <time dateTime="{{ $dateTime }}">
+        {{ .Date.Format "January 2" }}{{ if in (slice 1 21 31) .Date.Day}}st{{ else if in (slice 2 22) .Date.Day}}nd{{ else if in (slice 3 23) .Date.Day}}rd{{ else }}th{{ end }},
+        {{ .Date.Format "2006" }}</time>
+      by&nbsp;
+      {{- partial "author.html" . -}}
+    </span>
+  </div>
+  {{ .Content }}
+{{ end }}

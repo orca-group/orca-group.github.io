@@ -1,1 +1,3 @@
-# orca-group.github.io
+# Orca Studio
+
+The public website for Orca Studio

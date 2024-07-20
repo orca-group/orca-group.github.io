@@ -1,0 +1,3 @@
+baseURL = 'https://orca-group.github.io/'
+languageCode = 'en-us'
+title = 'Orca Studio'
